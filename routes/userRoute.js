@@ -12,6 +12,7 @@ import {
   clearCookie,
   addSpellToUser,
   deleteSpell,
+  checkCookie,
 } from "../controller/userController.js";
 import { authenticate } from "../middleware/authenticate.js";
 
@@ -24,6 +25,7 @@ router.get("/user-spells", authenticate, getUserSpells);
 router.get("/delete-cookie", clearCookie)
 router.post("/addspell", authenticate, addSpellToUser)
 router.delete("/delete-spell", authenticate, deleteSpell)
+router.get("/checkCookie", authenticate, checkCookie)
 
 
 export default router;

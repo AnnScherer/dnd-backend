@@ -88,13 +88,14 @@ export const getUserSpells = async (req, res) => {
 export const addSpellToUser = async (req, res) => {
   try {
     const { userId } = req.user;
+    console.log(userId);
     const { spells } = await User.findById(userId).select("spells -_id");
     console.log(spells);
     if (spells.some((oneSpell)=>req.body._id === oneSpell._id)) {
       res.send("zauber ist bereits gespeichert")
     } else {
       const addSpells = await User.updateOne(
-        { userId },
+        { _id: userId },
         {
           $push: { spells: req.body },
         }
@@ -132,3 +133,12 @@ export const deleteSpell = async (req, res) => {
     console.log(error);
   }
 };
+
+export const checkCookie = async(req, res)=>{
+  try {
+    res.json(true)
+  } catch (error) {
+    res.json(error);
+    console.log(error);
+  }
+}
