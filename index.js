@@ -32,8 +32,6 @@ mongoose
 
 // ----------------------------------------------------------
 // Starte Server auf in der Config hinterlegtem Port
-app.listen(process.env.API_PORT, () => {
-  console.log(
-    `Server is listening on http://localhost:${process.env.API_PORT}`
-  );
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening on http://localhost:${process.env.PORT}`);
 });
